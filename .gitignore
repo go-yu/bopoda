@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 特定のデータフォルダを除外
+data/
+tools/
+# もしapp/game/内にある特定の生成ファイルも除外したい場合
+# app/game/problems.generated.ts
