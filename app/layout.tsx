@@ -13,16 +13,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "注音打 | BOPOMO TYPING - 台湾の注音符号タイピングゲーム",
-  description: "台湾の注音符号（ボポモフォ）をマスターするためのタイピング練習ゲームです。",
-  icons: {
-    icon: [
-      { url: "/favicon.ico?v=1" },
-      { url: "/favicon.webp?v=1", type: "image/webp" },
+  title: "注音打 | BOPOMO TYPING",
+  description: "台湾の注音符号（ボポモフォ）をマスターするためのタイピング練習ゲーム。",
+  openGraph: {
+    title: "注音打 | BOPOMO TYPING",
+    description: "台湾の注音符号（ボポモフォ）をマスターしよう",
+    url: "https://bopomo-typing.vercel.app", 
+    siteName: "注音打",
+    images: [
+      {
+        url: "/opengraph-image.png", // app直下に置くとNext.jsが自動認識します
+        width: 1200,
+        height: 630,
+        alt: "注音打 | BOPOMO TYPING",
+      },
     ],
-    apple: [
-      { url: "/apple-icon.png?v=1", type: "image/png" },
-    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "注音打 | BOPOMO TYPING",
+    images: ["/opengraph-image.png"],
   },
 };
 
