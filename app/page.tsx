@@ -8,8 +8,8 @@ export default function LandingPage() {
     <div style={styles.container}>
       <header style={styles.header}>
         {/* 新しいネーミングに合わせて修正 */}
-        <h1 style={styles.logo}>注音打</h1>
-        <p style={styles.tagline}>BOPOMO TYPING</p>
+        <h1 style={styles.logo}>ボポ打</h1>
+        <p style={styles.tagline}>BOPO TYPING</p>
         <p style={styles.subTagline}>台湾の注音符号（ボポモフォ）をマスターするタイピングゲーム</p>
       </header>
 
@@ -18,7 +18,7 @@ export default function LandingPage() {
         <section style={styles.section}>
           <h2 style={styles.title}>🎮 ゲームについて</h2>
           <p style={styles.text}>
-            「注音打」は、台湾で使われている注音符号（Bopomofo）のタイピング練習ソフトです。<br />
+            「ボポ打」は、台湾で使われている注音符号（Bopomofo）のタイピング練習ソフトです。<br />
             {/* 乙女の祈りのメロディに乗せて、楽しく注音符号のキー配列を習得しましょう。 */}
           </p>
           <div style={styles.warningBox}>
@@ -59,7 +59,7 @@ export default function LandingPage() {
       </main>
 
       <footer style={styles.footer}>
-        <p>&copy; BOPOMO TYPING</p>
+        <p>&copy; BOPO TYPING</p>
         <p style={{ marginTop: "4px" }}>Sound Effect: ポケットサウンド</p>
       </footer>
     </div>

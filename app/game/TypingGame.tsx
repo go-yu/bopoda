@@ -206,8 +206,8 @@ export default function TypingGame() {
         {scene === 'title' && (
           <div style={styles.centered}>
             {/* サブタイトルをプロジェクト名のように配置 */}
-            <div style={styles.titleLabel}>BOPOMO TYPING</div>
-            <h1 style={styles.logo}>注音打</h1>
+            <div style={styles.titleLabel}>BOPO TYPING</div>
+            <h1 style={styles.logo}>ボポ打</h1>
             <div style={styles.menuList}>
               <button style={styles.mainBtn} onClick={() => setScene('level')}>スタート</button>
               <button style={styles.subBtn} onClick={() => setScene('settings')}>設定</button>
