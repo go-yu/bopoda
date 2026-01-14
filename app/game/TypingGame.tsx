@@ -2,6 +2,7 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { PROBLEMS, type Problem } from "./problems.generated";
 import {
   applyChar,
@@ -205,9 +206,18 @@ export default function TypingGame() {
       <div style={styles.mainContainer}>
         {scene === 'title' && (
           <div style={styles.centered}>
-            {/* サブタイトルをプロジェクト名のように配置 */}
             <div style={styles.titleLabel}>BOPO TYPING</div>
-            <h1 style={styles.logo}>ボポ打</h1>
+            {/* 透過ロゴ画像を配置 */}
+            <div style={styles.logoContainer}>
+              <Image 
+                src="/opengraph-image_transparent.png" 
+                alt="ボポ打" 
+                width={360} 
+                height={189} 
+                priority
+                style={styles.logoImage}
+              />
+            </div>
             <div style={styles.menuList}>
               <button style={styles.mainBtn} onClick={() => setScene('level')}>スタート</button>
               <button style={styles.subBtn} onClick={() => setScene('settings')}>設定</button>
@@ -262,7 +272,18 @@ export default function TypingGame() {
             </div>
             <div style={styles.playZone}>
               {isPaused ? (
-                <div style={styles.pauseOverlay}><div style={styles.pauseText}>スペースキーを押して開始</div><div style={styles.pauseSubText}>レベル: {selectedLevelName}</div></div>
+                <div style={styles.pauseOverlay}>
+                  {/* ポーズ画面にもロゴを配置 */}
+                  <Image 
+                    src="/opengraph-image_transparent.png" 
+                    alt="" 
+                    width={450} 
+                    height={450} 
+                    style={{ marginBottom: '24px', opacity: 0.8 }}
+                  />
+                  <div style={styles.pauseText}>スペースキーを押して開始</div>
+                  <div style={styles.pauseSubText}>レベル: {selectedLevelName}</div>
+                </div>
               ) : (
                 <>
                   <div style={styles.bopomofoDisplay} aria-live="polite"><span style={{ color: "#d1d5db" }}>{state.typedSoFar}</span><span style={{ color: "#111827" }}>{state.current.bopomofo.slice(state.index)}</span></div>
@@ -297,8 +318,9 @@ const styles: Record<string, React.CSSProperties> = {
   wrapper: { backgroundColor: "#f3f4f6", height: "100vh", display: "flex", justifyContent: "center", alignItems: "center", fontFamily: "system-ui, sans-serif" },
   mainContainer: { width: "800px", height: "540px", backgroundColor: "#ffffff", borderRadius: "24px", boxShadow: "0 10px 25px rgba(0,0,0,0.05)", display: "flex", flexDirection: "column", padding: "40px", overflow: "hidden", position: "relative" },
   centered: { display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%" },
-  titleLabel: { fontSize: "12px", color: "#9ca3af", fontWeight: "bold", letterSpacing: "4px" },
-  logo: { fontSize: "60px", color: "#111827", margin: "10px 0 40px 0", fontWeight: "900" },
+  titleLabel: { fontSize: "12px", color: "#9ca3af", fontWeight: "bold", letterSpacing: "4px", marginBottom: "8px" },
+  logoContainer: { display: "flex", justifyContent: "center", marginBottom: "40px" },
+  logoImage: { maxWidth: "100%", height: "auto", objectFit: "contain" },
   menuList: { display: "flex", flexDirection: "column", gap: "16px", width: "300px", alignItems: "center" },
   mainBtn: { width: "100%", padding: "18px", backgroundColor: "#111827", color: "#ffffff", border: "none", borderRadius: "16px", fontSize: "20px", fontWeight: "bold", cursor: "pointer" },
   subBtn: { width: "100%", padding: "14px", backgroundColor: "#f9fafb", color: "#4b5563", border: "1px solid #e5e7eb", borderRadius: "16px", fontSize: "16px", cursor: "pointer" },
@@ -319,7 +341,7 @@ const styles: Record<string, React.CSSProperties> = {
   exitBtn: { background: "none", border: "none", color: "#9ca3af", cursor: "pointer", fontSize: "14px" },
   gameStats: { display: "flex", gap: "20px", color: "#6b7280", fontSize: "13px", fontWeight: "bold" },
   playZone: { flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", position: "relative" },
-  pauseOverlay: { textAlign: "center" },
+  pauseOverlay: { textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" },
   pauseText: { fontSize: "32px", fontWeight: "bold", color: "#111827", marginBottom: "8px" },
   pauseSubText: { fontSize: "18px", color: "#6b7280" },
   bopomofoDisplay: { fontSize: "84px", fontWeight: "800", letterSpacing: "8px" },

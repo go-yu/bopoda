@@ -2,13 +2,27 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
+/**
+ * ボポ打 ランディングページ
+ * 作成したOGP画像をメインロゴとして再利用します。
+ */
 export default function LandingPage() {
   return (
     <div style={styles.container}>
       <header style={styles.header}>
-        {/* 新しいネーミングに合わせて修正 */}
-        <h1 style={styles.logo}>ボポ打</h1>
+        {/* ロゴ画像エリア */}
+        <div style={styles.logoContainer}>
+          <Image 
+            src="/opengraph-image_transparent.png" 
+            alt="ボポ打 - BOPOMO TYPING" 
+            width={400} 
+            height={210} 
+            priority 
+            style={styles.logoImage}
+          />
+        </div>
         <p style={styles.tagline}>BOPO TYPING</p>
         <p style={styles.subTagline}>台湾の注音符号（ボポモフォ）をマスターするタイピングゲーム</p>
       </header>
@@ -19,7 +33,7 @@ export default function LandingPage() {
           <h2 style={styles.title}>🎮 ゲームについて</h2>
           <p style={styles.text}>
             「ボポ打」は、台湾で使われている注音符号（Bopomofo）のタイピング練習ソフトです。<br />
-            {/* 乙女の祈りのメロディに乗せて、楽しく注音符号のキー配列を習得しましょう。 */}
+            注音符号のキー配列を効率よく、楽しく習得することを目指しています。
           </p>
           <div style={styles.warningBox}>
             <strong>⚠️ 注意:</strong> 本アプリは物理キーボード専用です。スマートフォンやタブレットのソフトウェアキーボードには対応していません。
@@ -45,7 +59,7 @@ export default function LandingPage() {
           <div style={styles.scrollBox}>
             <p style={styles.smallText}>
               1. 当サイトでは、ゲーム設定やハイスコアの保存にブラウザのLocalStorageを使用します。<br />
-              2. サービス改善のため、個人を特定しない形でのアクセス解析（Google Analytics等）を利用する場合があります。<br />
+              2. サービス改善のため、個人を特定しない形でのアクセス解析を利用する場合があります。<br />
               3. 収集した情報は、法令に基づく場合を除き、第三者に提供することはありません。
             </p>
           </div>
@@ -67,19 +81,66 @@ export default function LandingPage() {
 }
 
 const styles: Record<string, React.CSSProperties> = {
-  container: { backgroundColor: "#f9fafb", minHeight: "100vh", padding: "40px 20px", fontFamily: "system-ui, sans-serif", color: "#111827" },
+  container: { 
+    backgroundColor: "#f9fafb", 
+    minHeight: "100vh", 
+    padding: "40px 20px", 
+    fontFamily: "'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif", 
+    color: "#111827" 
+  },
   header: { textAlign: "center", marginBottom: "40px" },
-  logo: { fontSize: "64px", fontWeight: "900", marginBottom: "5px", letterSpacing: "-1px" },
+  logoContainer: {
+    display: "flex",
+    justifyContent: "center",
+    marginBottom: "10px",
+  },
+  logoImage: {
+    maxWidth: "100%",
+    height: "auto",
+    objectFit: "contain",
+  },
   tagline: { fontSize: "20px", fontWeight: "bold", color: "#3b82f6", marginBottom: "8px", letterSpacing: "2px" },
   subTagline: { fontSize: "16px", color: "#6b7280" },
-  main: { maxWidth: "700px", margin: "0 auto", backgroundColor: "#fff", padding: "40px", borderRadius: "24px", boxShadow: "0 10px 30px rgba(0,0,0,0.05)" },
+  main: { 
+    maxWidth: "700px", 
+    margin: "0 auto", 
+    backgroundColor: "#fff", 
+    padding: "40px", 
+    borderRadius: "24px", 
+    boxShadow: "0 10px 30px rgba(0,0,0,0.05)" 
+  },
   section: { marginBottom: "32px" },
   title: { fontSize: "20px", fontWeight: "bold", marginBottom: "12px", borderLeft: "4px solid #111827", paddingLeft: "12px" },
   text: { fontSize: "16px", lineHeight: "1.6", color: "#374151" },
-  warningBox: { marginTop: "16px", padding: "12px", backgroundColor: "#fffbeb", border: "1px solid #fef3c7", borderRadius: "8px", color: "#92400e", fontSize: "14px" },
-  scrollBox: { backgroundColor: "#f3f4f6", padding: "16px", borderRadius: "12px", height: "100px", overflowY: "scroll", border: "1px solid #e5e7eb" },
+  warningBox: { 
+    marginTop: "16px", 
+    padding: "12px", 
+    backgroundColor: "#fffbeb", 
+    border: "1px solid #fef3c7", 
+    borderRadius: "8px", 
+    color: "#92400e", 
+    fontSize: "14px" 
+  },
+  scrollBox: { 
+    backgroundColor: "#f3f4f6", 
+    padding: "16px", 
+    borderRadius: "12px", 
+    height: "100px", 
+    overflowY: "scroll", 
+    border: "1px solid #e5e7eb" 
+  },
   smallText: { fontSize: "13px", lineHeight: "1.6", color: "#6b7280" },
   btnContainer: { textAlign: "center", marginTop: "40px" },
-  startBtn: { display: "inline-block", backgroundColor: "#111827", color: "#fff", padding: "18px 48px", borderRadius: "16px", fontSize: "20px", fontWeight: "bold", textDecoration: "none", transition: "all 0.2s ease" },
+  startBtn: { 
+    display: "inline-block", 
+    backgroundColor: "#111827", 
+    color: "#fff", 
+    padding: "18px 48px", 
+    borderRadius: "16px", 
+    fontSize: "20px", 
+    fontWeight: "bold", 
+    textDecoration: "none", 
+    transition: "transform 0.2s ease, backgroundColor 0.2s ease" 
+  },
   footer: { textAlign: "center", marginTop: "40px", color: "#9ca3af", fontSize: "12px", lineHeight: "1.5" }
 };
